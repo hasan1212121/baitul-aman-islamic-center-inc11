@@ -17,6 +17,18 @@ export default function RootLayout({ children }) {
           ))}
         </div>
         
+        <style dangerouslySetInnerHTML={{__html: `
+          .allah-names-bg { position: fixed !important; opacity: 0.25 !important; width: 100vw !important; height: 100vh !important; }
+          .modules-grid { display: flex; flex-direction: column; gap: 2rem; }
+          @media (min-width: 769px) {
+            .modules-grid { display: grid; grid-template-columns: 1fr 1fr; }
+            .mod-time { grid-column: 1; grid-row: 1; }
+            .mod-prayer { grid-column: 2; grid-row: 1; }
+            .mod-compass { grid-column: 1; grid-row: 2; }
+            .mod-quran { grid-column: 2; grid-row: 2; }
+          }
+        `}} />
+
         {children}
       </body>
     </html>
