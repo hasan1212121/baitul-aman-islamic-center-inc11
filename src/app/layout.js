@@ -1,6 +1,19 @@
 export const metadata = {
-  title: "Baitul Aman Islamic Center Inc.",
-  description: "Baitul Aman Islamic Center in Bronx, NY - Beautiful Modern Mosque Website",
+  title: "Baitul Aman Islamic Center Inc. | Bronx Mosque & Prayer Times",
+  description: "Official website for Baitul Aman Islamic Center located in Bronx, NY. Discover live daily prayer times, Qibla direction, local weather, and community notices.",
+  keywords: ["Mosque", "Bronx", "Islamic Center", "Baitul Aman", "Prayer Times", "Qibla Direction", "Muslim Community NY", "Hijri Calendar", "Bengali Calendar"],
+  authors: [{ name: "Pixiilab", url: "https://pixiilab.net" }],
+  openGraph: {
+    title: "Baitul Aman Islamic Center Inc. | Bronx, NY",
+    description: "Welcome to Baitul Aman Islamic Center. Join our community for daily prayers, Islamic events, and comprehensive Hijri/Bengali calendar tools.",
+    siteName: "Baitul Aman Islamic Center",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  }
 };
 
 import "./globals.css";

@@ -1,0 +1,17 @@
+# Baitul Aman Islamic Center Inc.
+## Contact & Location
+- Address: 2351 Newbold Ave, Bronx, NY 10462
+- Phone: +1 718-904-8828
+- Facebook: https://www.facebook.com/baicbronx/
+
+## About the Application
+This is the official web portal for the Baitul Aman Islamic Center. It is built as a highly interactive, multilingual digital community board designed to streamline information access for local Muslims.
+
+## Core Services & Functions
+1. **Live Prayer Tracker**: Real-time accurate timings and countdowns for Fajr, Dhuhr, Asr, Maghrib, Isha, and Jummah prayers. Includes an integrated web audio Azan player.
+2. **Qibla Compass**: A live, hardware-accelerated compass tracking absolute bearing toward Mecca based on native device sensors.
+3. **Tri-Language System**: Full interface tokenization supporting English, Arabic, and Bangla for maximum community inclusion.
+4. **Three-Tier Calendar Engine**: Features a complex custom algorithm overlapping the Gregorian, Hijri, and the official 14th-April updated native Bengali offset calendar.
+5. **Dynamic Community Notices**: Real-time server-sent announcements controlled by the mosque administrators.
+
+*Managed and developed by Pixiilab (pixiilab.net)*
