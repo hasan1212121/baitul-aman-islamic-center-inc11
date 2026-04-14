@@ -22,16 +22,23 @@ export default function QiblaCompass() {
     if (!permissionGranted) return;
     
     const handleOrientation = (e) => {
-      let compassHeading = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+      let compassHeading = e.webkitCompassHeading;
+      if (!compassHeading && e.alpha !== null) {
+        compassHeading = 360 - e.alpha; 
+      }
       if (compassHeading) {
         setHeading(compassHeading);
       }
     };
 
-    if (window.DeviceOrientationEvent) {
+    if ('ondeviceorientationabsolute' in window) {
+      window.addEventListener("deviceorientationabsolute", handleOrientation, true);
+    } else if (window.DeviceOrientationEvent) {
       window.addEventListener("deviceorientation", handleOrientation, true);
     }
+
     return () => {
+      window.removeEventListener("deviceorientationabsolute", handleOrientation, true);
       window.removeEventListener("deviceorientation", handleOrientation, true);
     };
   }, [permissionGranted]);

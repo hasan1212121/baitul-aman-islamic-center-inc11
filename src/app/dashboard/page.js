@@ -16,7 +16,7 @@ export default function Dashboard() {
       fetch('/api/settings').then(r => r.json()).then(data => {
         if(data.notice) {
            const arr = Array.isArray(data.notice) ? data.notice : [data.notice];
-           setNotices(arr.map(n => typeof n === 'string' ? {text: n, expiresAt: ""} : n));
+           setNotices(arr.map(n => typeof n === 'string' ? {textEN: n, textAR: "", textBN: "", expiresAt: ""} : {textEN: n.text || "", ...n}));
         }
         if(data.prayerTimes) setPrayerTimes(data.prayerTimes);
       });
@@ -70,18 +70,21 @@ export default function Dashboard() {
         <div style={{ marginBottom: '2rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
              <label style={{ fontWeight: 'bold' }}>Rolling Notices</label>
-             <button className="btn" style={{ padding: '0.2rem 0.5rem', fontSize: '0.8rem' }} onClick={() => setNotices([...notices, {text: "", expiresAt: ""}])}>+ Add Row</button>
+             <button className="btn" style={{ padding: '0.2rem 0.5rem', fontSize: '0.8rem' }} onClick={() => setNotices([...notices, {textEN: "", textAR: "", textBN: "", expiresAt: ""}])}>+ Add Row</button>
           </div>
           {notices.map((n, i) => (
              <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1rem', padding: '1rem', border: '1px dashed var(--glass-border)', borderRadius: '8px' }}>
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                   <div style={{ flex: 1, minWidth: '200px' }}>
-                      <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Notice Text</label>
-                      <input type="text" className="input-field" style={{ marginBottom: 0 }} value={n.text} onChange={e => {
-                         const newN = [...notices];
-                         newN[i].text = e.target.value;
-                         setNotices(newN);
-                      }} placeholder="Type announcement here..." />
+                   <div style={{ flex: 1, minWidth: '200px', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      <input type="text" className="input-field" style={{ marginBottom: 0 }} value={n.textEN} onChange={e => {
+                         const newN = [...notices]; newN[i].textEN = e.target.value; setNotices(newN);
+                      }} placeholder="Notice Text (English)..." />
+                      <input type="text" className="input-field" style={{ marginBottom: 0 }} value={n.textAR} onChange={e => {
+                         const newN = [...notices]; newN[i].textAR = e.target.value; setNotices(newN);
+                      }} placeholder="Notice Text (Arabic)..." dir="rtl" />
+                      <input type="text" className="input-field" style={{ marginBottom: 0 }} value={n.textBN} onChange={e => {
+                         const newN = [...notices]; newN[i].textBN = e.target.value; setNotices(newN);
+                      }} placeholder="Notice Text (Bangla)..." />
                    </div>
                    <div style={{ minWidth: '200px' }}>
                       <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Expiration Timer (Optional)</label>

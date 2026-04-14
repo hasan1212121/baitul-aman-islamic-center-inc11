@@ -12,7 +12,7 @@ function PageContent() {
   const { t, lang, setLang } = useLanguage();
 
   return (
-    <main className="main-container" dir={lang === 'AR' ? 'rtl' : 'ltr'} style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+    <main className="main-container" style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '1rem' }}>
          {['EN', 'AR', 'BN'].map(l => (
             <button key={l} onClick={() => setLang(l)} className="btn" style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', opacity: lang === l ? 1 : 0.5, border: '1px solid var(--glass-border)' }}>{l}</button>
@@ -21,7 +21,7 @@ function PageContent() {
 
       <header className="glass-panel" style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: 'var(--accent-color)', marginBottom: '0.5rem', fontFamily: 'serif' }}>{t.heading}</h1>
-        <p style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', color: 'var(--text-muted)' }}>{t.address}</p>
+        <p style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', color: 'var(--text-muted)' }} dir={lang === 'AR' ? 'rtl' : 'ltr'}>{t.address}</p>
         <div className="header-contact" style={{ marginTop: '1rem', alignItems: 'center' }}>
            <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0, whiteSpace: 'nowrap' }}>
              📞 <a href="tel:+17189048828" style={{ color: 'var(--text-light)', textDecoration: 'none' }}>+1 (718) 904-8828</a>
