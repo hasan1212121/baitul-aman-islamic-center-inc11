@@ -12,7 +12,7 @@ function PageContent() {
   const { t, lang, setLang } = useLanguage();
 
   return (
-    <main className="main-container" style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+    <main className="main-container" dir={lang === 'AR' ? 'rtl' : 'ltr'} style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '1rem' }}>
          {['EN', 'AR', 'BN'].map(l => (
             <button key={l} onClick={() => setLang(l)} className="btn" style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', opacity: lang === l ? 1 : 0.5, border: '1px solid var(--glass-border)' }}>{l}</button>

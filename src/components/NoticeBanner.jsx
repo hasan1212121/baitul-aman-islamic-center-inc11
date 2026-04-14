@@ -33,7 +33,11 @@ export default function NoticeBanner() {
       <div className="marquee-content" style={{ animationDuration: `${Math.max(20, notices.length * 15)}s` }}>
         <span style={{ fontWeight: 'bold', color: 'var(--accent-color)' }}>{t.notice}</span> 
         {notices.map((n, index) => {
-          const text = typeof n === 'string' ? n : n.text;
+          let text = typeof n === 'string' ? n : n.text;
+          if (typeof n === 'object') {
+             if (lang === 'AR' && n.textAR) text = n.textAR;
+             if (lang === 'BN' && n.textBN) text = n.textBN;
+          }
           return (
             <span key={index} style={{ marginLeft: '1rem', marginRight: '2rem', fontSize: '1.2rem' }}>
               <span style={{ color: 'rgba(255,255,255,0.3)', marginRight: '0.5rem' }}>•</span> 
