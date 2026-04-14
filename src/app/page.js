@@ -22,11 +22,11 @@ function PageContent() {
       <header className="glass-panel" style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', color: 'var(--accent-color)', marginBottom: '0.5rem', fontFamily: 'serif' }}>{t.heading}</h1>
         <p style={{ fontSize: 'clamp(1rem, 4vw, 1.2rem)', color: 'var(--text-muted)' }}>{t.address}</p>
-        <div className="header-contact" style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1rem', alignItems: 'center' }}>
-           <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0 }}>
+        <div className="header-contact" style={{ marginTop: '1rem', alignItems: 'center' }}>
+           <p style={{ fontSize: '1.2rem', fontWeight: 'bold', margin: 0, whiteSpace: 'nowrap' }}>
              📞 <a href="tel:+17189048828" style={{ color: 'var(--text-light)', textDecoration: 'none' }}>+1 (718) 904-8828</a>
            </p>
-           <button className="btn" style={{ background: '#28a745', color: '#fff', padding: '0.5rem 1.5rem', borderRadius: '50px' }}>💚 {t.donate}</button>
+           <button className="btn btn-donate" style={{ background: '#28a745', color: '#fff', padding: '0.5rem 1.5rem', borderRadius: '50px', whiteSpace: 'nowrap' }}>💚 {t.donate}</button>
         </div>
       </header>
 
@@ -35,15 +35,11 @@ function PageContent() {
 
       <NoticeBanner />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          <DateTimeWeather />
-          <QiblaCompass />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          <PrayerTimes />
-          <QuranVerse />
-        </div>
+      <div className="modules-grid">
+        <div className="mod-time"><DateTimeWeather /></div>
+        <div className="mod-prayer"><PrayerTimes /></div>
+        <div className="mod-compass"><QiblaCompass /></div>
+        <div className="mod-quran"><QuranVerse /></div>
       </div>
 
       <footer className="footer" style={{ marginTop: '3rem' }}>

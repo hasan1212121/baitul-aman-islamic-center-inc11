@@ -5,9 +5,22 @@ import { useLanguage } from './Providers';
 export default function QiblaCompass() {
   const { t } = useLanguage();
   const [heading, setHeading] = useState(0);
+  const [permissionGranted, setPermissionGranted] = useState(false);
+  const [needsPermission, setNeedsPermission] = useState(false);
   const qiblaAngle = 58.5; // From Bronx to Mecca
 
   useEffect(() => {
+    // Check if permission is natively required (iOS 13+)
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      setNeedsPermission(true);
+    } else {
+      setPermissionGranted(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!permissionGranted) return;
+    
     const handleOrientation = (e) => {
       let compassHeading = e.webkitCompassHeading || Math.abs(e.alpha - 360);
       if (compassHeading) {
@@ -21,7 +34,16 @@ export default function QiblaCompass() {
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation, true);
     };
-  }, []);
+  }, [permissionGranted]);
+
+  const requestAccess = async () => {
+    try {
+      if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        const res = await DeviceOrientationEvent.requestPermission();
+        if (res === 'granted') setPermissionGranted(true);
+      }
+    } catch (e) { console.error(e); }
+  };
 
   const rotation = qiblaAngle - heading;
 
@@ -56,6 +78,12 @@ export default function QiblaCompass() {
         
         <div style={{width: '20px', height: '20px', background: 'var(--accent-color)', borderRadius: '50%', zIndex: 10, position: 'absolute', top: '100px'}} />
       </div>
+
+      {needsPermission && !permissionGranted && (
+        <button className="btn" onClick={requestAccess} style={{ marginTop: '1.5rem', background: '#cc4444', color: '#fff' }}>
+          Approve Compass Access
+        </button>
+      )}
     </div>
   );
 }

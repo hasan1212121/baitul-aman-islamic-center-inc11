@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import { useLanguage } from './Providers';
 
 export default function NoticeBanner() {
+  const { t } = useLanguage();
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export default function NoticeBanner() {
   return (
     <div className="glass-panel marquee-container" style={{ padding: '1rem', borderLeft: '4px solid var(--accent-color)', marginBottom: '2rem' }}>
       <div className="marquee-content" style={{ animationDuration: `${Math.max(20, notices.length * 15)}s` }}>
-        <span style={{ fontWeight: 'bold', color: 'var(--accent-color)' }}>NOTICE:</span> 
+        <span style={{ fontWeight: 'bold', color: 'var(--accent-color)' }}>{t.notice}</span> 
         {notices.map((n, index) => {
           const text = typeof n === 'string' ? n : n.text;
           return (
