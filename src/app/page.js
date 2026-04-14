@@ -47,11 +47,27 @@ function PageContent() {
            <svg style={{ width: '28px', height: '28px', fill: '#1877F2' }} viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
            {t.followFb}
         </a>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{t.rights}</p>
-          <p style={{ fontSize: '0.8rem', opacity: 0.7 }}>
-            Managed by <a href="https://pixiilab.net" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline', fontWeight: 'bold' }}>Pixiilab</a>
-          </p>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', marginTop: '1rem' }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'center' }}>{t.rights}</p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-light)', opacity: 0.7 }}>Managed by</span>
+            <a href="https://pixiilab.net" target="_blank" rel="noopener noreferrer" style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid var(--accent-color)',
+                padding: '0.3rem 0.8rem',
+                borderRadius: '50px',
+                color: 'var(--accent-color)',
+                fontWeight: 'bold',
+                textDecoration: 'none',
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: '0.8rem',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                boxShadow: '0 0 10px rgba(229, 179, 49, 0.1)'
+            }}>
+              Pixiilab
+            </a>
+          </div>
         </div>
       </footer>
     </main>
