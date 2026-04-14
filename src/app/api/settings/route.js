@@ -5,8 +5,8 @@ export const dynamic = 'force-dynamic';
 // Next.js Edge friendly in-memory storage. Note setting resets on cold boot unless wired to Vercel KV or real db.
 let configOptions = {
   notice: [
-    { text: "Welcome to Baitul Aman Islamic Center Inc.", expiresAt: "" },
-    { text: "Please remember to silence your devices during prayer.", expiresAt: "" }
+    { text: "Welcome to Baitul Aman Islamic Center Inc.", textAR: "مرحبًا بكم في مركز بيت الأمان الإسلامي.", textBN: "বায়তুল আমান ইসলামিক সেন্টারে স্বাগতম।", expiresAt: "" },
+    { text: "Please remember to silence your devices during prayer.", textAR: "يرجى تذكر كتم صوت أجهزتكم أثناء الصلاة.", textBN: "দয়া করে নামাজের সময় আপনার ডিভাইসগুলি নীরব রাখতে মনে রাখবেন।", expiresAt: "" }
   ],
   prayerTimes: {
     Fajr: "5:45 AM",
