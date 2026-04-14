@@ -36,29 +36,29 @@ export default function DateTimeWeather() {
 
   return (
     <div className="glass-panel" style={{ textAlign: 'center', marginBottom: '2rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <h2 style={{ fontSize: '3rem', marginBottom: '0.5rem', color: 'var(--accent-color)' }}>
+      <h2 style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', marginBottom: '0.5rem', color: 'var(--accent-color)' }}>
         {time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
-        <div>
-          <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.gregorian}</div>
-          <div style={{ fontSize: '1.1rem', fontWeight: '500' }}>{formatEnglish(time)}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
+        <div style={{ flex: '1 1 100px' }}>
+          <div style={{ fontSize: '1rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.gregorian}</div>
+          <div style={{ fontSize: 'clamp(1rem, 4vw, 1.1rem)', fontWeight: '500' }}>{formatEnglish(time)}</div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.hijri}</div>
-          <div style={{ fontSize: '1.3rem', fontFamily: 'serif', fontWeight: 'bold' }}>{formatHijri(time)}</div>
+        <div style={{ flex: '1 1 100px' }}>
+          <div style={{ fontSize: '1rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.hijri}</div>
+          <div style={{ fontSize: 'clamp(1.1rem, 4vw, 1.3rem)', fontFamily: 'serif', fontWeight: 'bold' }}>{formatHijri(time)}</div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.bangla}</div>
-          <div style={{ fontSize: '1.2rem', fontWeight: '500' }}>{bdDate.formatted}</div>
+        <div style={{ flex: '1 1 100px' }}>
+          <div style={{ fontSize: '1rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.bangla}</div>
+          <div style={{ fontSize: 'clamp(1.1rem, 4vw, 1.2rem)', fontWeight: '500' }}>{bdDate.formatted}</div>
         </div>
       </div>
-      <div style={{ marginTop: '2rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      <div className="header-contact" style={{ marginTop: '2rem', borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
            <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{t.currentWeather}</div>
            <div style={{ fontSize: '2rem', color: 'var(--accent-color)', fontWeight: 'bold' }}>{weather.temp}°F</div>
         </div>
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
            <FullCalendarModal />
         </div>
       </div>
